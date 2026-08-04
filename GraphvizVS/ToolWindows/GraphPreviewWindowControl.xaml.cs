@@ -45,7 +45,7 @@ public partial class GraphPreviewWindowControl : UserControl
                 return;
 
             var tempFileName = Path.GetTempFileName();
-            File.WriteAllText(tempFileName, result.StandardOutput);
+            File.WriteAllText(tempFileName, result.StandardOutput, System.Text.Encoding.UTF8);
 
             var settings = new WpfDrawingSettings
             {
