@@ -39,13 +39,13 @@ public partial class GraphPreviewWindowControl : UserControl
 
             var result = await Cli.Wrap(CommandLineHelper.GetEnginePath())
                 .WithArguments(flags)
-                .ExecuteBufferedAsync();
+                .ExecuteBufferedAsync(System.Text.Encoding.UTF8);
 
             if (!result.IsSuccess)
                 return;
 
             var tempFileName = Path.GetTempFileName();
-            File.WriteAllText(tempFileName, result.StandardOutput, System.Text.Encoding.UTF8);
+            File.WriteAllText(tempFileName, result.StandardOutput);
 
             var settings = new WpfDrawingSettings
             {
